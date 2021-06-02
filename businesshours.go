@@ -113,7 +113,9 @@ func (h Hour) String() string {
 	return fmt.Sprintf("%02d:%02d", hours, minutes)
 }
 
-// TODO: comment missing
+// ParseBusinessHours converts a business hour string of a format lke "Mon-Fri 09:00-17:00 Europe/Berlin" into
+// BusinessHours. When a single weekday is provided the start and end day will be the same. In case the location
+// is omitted UTC is assumed.
 func ParseBusinessHours(in string) (*BusinessHours, error) {
 	components := strings.Split(in, " ")
 	if !(len(components) == 2 || len(components) == 3) {
